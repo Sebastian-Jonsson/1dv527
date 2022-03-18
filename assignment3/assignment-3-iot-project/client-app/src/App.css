@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.weatherBox {
+  padding: 0.5em;
+  padding-bottom: 10rem;
+  background-color: hsl(42, 72%, 80%);
+  opacity: 0.8;
+  border: 0.2rem solid;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(0, 0, 0);
+  width: 50rem;
+  height: fit-content;
+  font-size: 1.8rem;
+  border-radius: 10rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 15px, rgba(0, 0, 0, 0.12) 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 0px 0px, rgba(0, 0, 0, 0.17) 0px 3px 3px,
+    rgba(0, 0, 0, 0.09) 0px 0px 0px;
+  overflow: hidden;
+}
+.weatherBox h3 {
+  padding: 5rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.weatherBox p {
+  border: 0.1rem, solid;
+  border-radius: 1rem;
+  border-style: none double solid double;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 15px, rgba(0, 0, 0, 0.12) 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 0px 0px, rgba(0, 0, 0, 0.17) 0px 3px 3px,
+    rgba(0, 0, 0, 0.09) 0px 0px 0px;
+  cursor: pointer;
+}
+
+.textFitting {
+  flex-direction: column;
+  display: flex;
+}
+
+.textFitting p {
+  border: none rgb(189, 241, 193);
+  border-radius: 1px;
+  border-style: solid solid solid solid;
+  cursor: pointer;
+}
+
+/* */
+
+.backgroundImage {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), transparent),
+    url(./images/mountains.jpg);
+  min-height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+h3 {
+  padding: 5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  min-height: 10vh;
+  flex-wrap: wrap;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex: 0.2 1 40rem;
+}
+
+h1 {
+  margin: 2rem;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex: 1 1 10rem;
+}
+
+.main-head {
+  width: 95%;
+  margin: 0 0 0 auto;
+}
+
+/* Footer Section */
+
+footer {
+  background-color: #a8a026;
+  display: flex;
+  justify-content: flex-start;
+  min-height: 10vh;
+  align-items: center;
+  flex-direction: row;
+  color: white;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex: 1 1 40rem;
+}
+
+footer h4 {
+  flex: 1 1 40rem;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+}
+
+/* Pulse Weather */
+
+.temperaturePulse {
+  /* Chrome, Safari, Opera */
+  -webkit-animation: temperaturePulse 3s infinite;
+
+  /* Internet Explorer */
+  -ms-animation: temperaturePulse 3s infinite;
+
+  /* Standard Syntax */
+  animation: temperaturePulse 3.75s infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes temperaturePulse {
+  0% {
+    color: rgba(255, 0, 255);
+  }
+  110% {
+    color: black;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes temperaturePulse {
+  0% {
+    color: rgba(255, 255, 0);
+  }
+  110% {
+    color: black;
+  }
+}
+
+/* Standard Syntax */
+@keyframes temperaturePulse {
+  0% {
+    color: rgb(255, 30, 0);
+  }
+  110% {
+    color: black;
+  }
+}
+
+/* HumidityPart */
+.humidityPulse {
+  font-weight: light;
+  /* Chrome, Safari, Opera */
+  -webkit-animation: humidityPulse 3s infinite;
+
+  /* Internet Explorer */
+  -ms-animation: humidityPulse 3s infinite;
+
+  /* Standard Syntax */
+  animation: humidityPulse 3.75s infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes humidityPulse {
+  0% {
+    color: rgba(255, 0, 255);
+  }
+  110% {
+    color: black;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes humidityPulse {
+  0% {
+    color: rgba(255, 255, 0);
+  }
+  110% {
+    color: black;
+  }
+}
+
+/* Standard Syntax */
+@keyframes humidityPulse {
+  0% {
+    color: rgba(0, 255, 255);
+  }
+  110% {
+    color: black;
+  }
+}
