@@ -1,0 +1,100 @@
+{
+"meta": {
+"license": "MIT",
+"title": "Spells REST API",
+"author": "Sebastian Jonsson",
+"version": "v1",
+"description": "Register a user, after do a login so that you receive access rights certain methods."
+    },
+    "links": {
+        "self": {
+        "method": "GET",
+        "accessRights": "Not Required.",
+        "description": "The Root of the API.",
+        "url": "http://spells-api-1dv527.herokuapp.com/api"
+        },
+        "users": {
+            "viewUsers": {
+                "method": "GET",
+                "accessRights": "Not Required.",
+                "description": "View all registered users.",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/users"
+            },
+            "register": {
+                "method": "POST",
+                "contentType": "application/json",
+                "accessRights": "Not Required.",
+                "description": "In order to register send the following in JSON format: { email: <email>, password: <String> }",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/users"
+            },
+            "login": {
+                "method": "POST",
+                "contentType": "application/json",
+                "accessRights": "Not Required.",
+                "description": "In order to login send the following in JSON format: { email: <email>, password: <String> }",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/users/login"
+            },
+            "unregister": {
+                "method": "DELETE",
+                "accessRights": "Required.",
+                "description": "In order to unregister, make sure to include the id in the uri while logged in with a token.",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/users/:userId"
+            }
+        },
+        "spells": {
+            "showEverySpell": {
+                "method": "GET",
+                "accessRights": "Not Required.",
+                "description": "View all created spells.",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/spells"
+            },
+            "findSpecificSpell": {
+                "method": "GET",
+                "accessRights": "Not Required.",
+                "description": "View specific a spell based on spellId.",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/spells/:spellId"
+            },
+            "createSpell": {
+                "method": "POST",
+                "contentType": "application/json",
+                "accessRights": "Required.",
+                "description": "In order to create a new spell send the following in JSON format: { name: <String>, level: <Number>, castingTime: <String>, rangeOrArea: <String>, components: <String>, duration: <String>, school: <String>, attackOrSave: <String>, damageOrEffect: <String> }",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/spells"
+            },
+            "improveSpell": {
+                "method": "PATCH",
+                "contentType": "application/json",
+                "accessRights": "Required.",
+                "description": "Update a specific spell based on spellId. Send any of the following in JSON format: { name: <String>, level: <Number>, castingTime: <String>, rangeOrArea: <String>, components: <String>, duration: <String>, school: <String>, attackOrSave: <String>, damageOrEffect: <String> }",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/spells/:spellId"
+            },
+            "removeSpell": {
+                "method": "DELETE",
+                "accessRights": "Required.",
+                "description": "In order to remove a spell, make sure to include the id in the uri while logged in with a token.",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/spells/:spellId"
+            }
+        },
+        "hooks": {
+            "viewHooks": {
+                "method": "GET",
+                "accessRights": "Not Required.",
+                "description": "View all webhooks.",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/webhooks"
+            },
+            "createHook": {
+                "method": "POST",
+                "contentType": "application/json",
+                "accessRights": "Required.",
+                "description": "In order to create a new spell send the following in JSON format: { url: <String>, representiveName: <String>}",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/webhooks"
+            },
+            "removeHook": {
+                "method": "DELETE",
+                "accessRights": "Required.",
+                "description": "In order to remove a webhook, make sure to include the id in the uri while logged in with a token.Remove a webhook.",
+                "url": "http://spells-api-1dv527.herokuapp.com/api/v1/webhooks/:hookId"
+            }
+        }
+    }
+}

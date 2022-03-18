@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Death Ward",
+        "level": 4,
+        "castingTime": "1 Action",
+        "rangeOrArea": "Touch",
+        "components": "Vocal, Somantic",
+        "duration": "8 Hours",
+        "school": "Abjuration",
+        "attackOrSave": "None",
+        "damageOrEffect": "Buff(...)"
+    },
+    {
+        "name": "Find Familiar",
+        "level": 1,
+        "castingTime": "1 Hour",
+        "rangeOrArea": "10 Feet",
+        "components": "Vocal, Somantic, Material(10 gp worth of charcoal, incense, and herbs that must be consumed by fire in a brass brazier)",
+        "duration": "Instantaneous",
+        "school": "Conjuration",
+        "attackOrSave": "None",
+        "damageOrEffect": "Summoning"
+    },
+    {
+        "name": "Scrying",
+        "level": 5,
+        "castingTime": "10 Minutes",
+        "rangeOrArea": "Self",
+        "components": "Vocal, Somantic, Material(a focus worth at least 1,000 gp, such as a crystal ball, a silver mirror, or a font filled with holy water)",
+        "duration": "10 Minutes",
+        "school": "Divination",
+        "attackOrSave": "Wisdom Save",
+        "damageOrEffect": "Detection"
+    },
+    {
+        "name": "Otto's Irresistible Dance",
+        "level": 6,
+        "castingTime": "1 Action",
+        "rangeOrArea": "30 Feet",
+        "components": "Vocal",
+        "duration": "1 Minute",
+        "school": "Enchantment",
+        "attackOrSave": "Wisdom Save",
+        "damageOrEffect": "Control(...)"
+    },
+    {
+        "name": "Sunbeam",
+        "level": 6,
+        "castingTime": "1 Bonus Action",
+        "rangeOrArea": "60 Feet reach, 5 Feet wide",
+        "components": "Vocal, Somantic, Material(a magnifying glass)",
+        "duration": "1 Minute",
+        "school": "Evocation",
+        "attackOrSave": "Constitution Save",
+        "damageOrEffect": "6d8 Radiant Damage"
+    },
+    {
+        "name": "Dream",
+        "level": 5,
+        "castingTime": "1 Minute",
+        "rangeOrArea": "Self",
+        "components": "Vocal, Somantic, Material(a handful of sand, a dab of ink, and a writing quill plucked from a sleeping bird)",
+        "duration": "8 Hours",
+        "school": "Illusion",
+        "attackOrSave": "Wisdom Save",
+        "damageOrEffect": "Communication(...)"
+    },
+    {
+        "name": "Animate Dead",
+        "level": 3,
+        "castingTime": "1 Minute",
+        "rangeOrArea": "10 Feet",
+        "components": "Vocal, Somantic, Material(a drop of blood, a piece of flesh, and a pinch of bone dust)",
+        "duration": "Instantaneous",
+        "school": "Necromancy",
+        "attackOrSave": "None",
+        "damageOrEffect": "Creation"
+    },
+    {
+        "name": "Polymorph",
+        "level": 4,
+        "castingTime": "1 Action",
+        "rangeOrArea": "60 Feet",
+        "components": "Vocal, Somantic, Material(a caterpillar cocoon)",
+        "duration": "1 Hour",
+        "school": "Transmutation",
+        "attackOrSave": "Wisdom Save",
+        "damageOrEffect": "Control(...)"
+    }
+]

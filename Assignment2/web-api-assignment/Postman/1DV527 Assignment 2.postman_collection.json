@@ -1,0 +1,897 @@
+{
+	"info": {
+		"_postman_id": "f51fea4d-523a-481d-8c76-ef9dfdfcbd0e",
+		"name": "1DV527 Assignment 2",
+		"description": "The Collection handles the restful api assignment and is more specifically about D&D spells.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Index Of The API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Root: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Route Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Invalid Route: 404\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/test1",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"test1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register A New User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let resData = JSON.parse(responseBody)\r",
+							"\r",
+							"pm.environment.set(\"userId\", resData.asset._id)\r",
+							"\r",
+							"pm.test(\"Status New User: 201\", function () {\r",
+							"    pm.response.to.have.status(201)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"TestPerson@gmail.com\",\r\n    \"password\": \"{{Passw}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/users",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Same User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status User Copy: 409\", function () {\r",
+							"    pm.response.to.have.status(409)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"TestPerson@gmail.com\",\r\n    \"password\": \"{{Passw}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/users",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status View All users: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/users",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log In A User With Wrong Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Login Invalid Credentials: 401\", function () {\r",
+							"    pm.response.to.have.status(401)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"TestPerson@gmail.com\",\r\n    \"password\": \"WrongPassword\"\r\n}"
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/users/log-in",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"log-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log In A User With Correct Credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let resData = JSON.parse(responseBody)\r",
+							"\r",
+							"postman.setEnvironmentVariable(\"jwtToken\", resData.asset)\r",
+							"\r",
+							"pm.test(\"Status Login Valid Credentials: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"TestPerson@gmail.com\",\r\n    \"password\": \"{{Passw}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/users/log-in",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"log-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create A New Webhook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let resData = JSON.parse(responseBody)\r",
+							"\r",
+							"pm.environment.set(\"hookId\", resData.asset._id)\r",
+							"\r",
+							"pm.test(\"Status Webhook Created: 201\", function () {\r",
+							"    pm.response.to.have.status(201)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"http://localhost:4002/hook\",\r\n    \"representiveName\": \"Test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/webhooks",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"webhooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Same Webhook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Webhook Copy: 409\", function () {\r",
+							"    pm.response.to.have.status(409)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"http://localhost:4002/hook\",\r\n    \"representiveName\": \"Test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/webhooks",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"webhooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Webhooks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Get All Webhooks: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/webhooks",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"webhooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create A New Spell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let resData = JSON.parse(responseBody)\r",
+							"\r",
+							"pm.environment.set(\"spellId\", resData.asset._id)\r",
+							"\r",
+							"pm.test(\"Status New Spell: 201\", function () {\r",
+							"    pm.response.to.have.status(201)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Arcane Orb\",\r\n    \"level\": 6,\r\n    \"castingTime\": \"1 Minute\",\r\n    \"rangeOrArea\": \"30 Feet\",\r\n    \"components\": \"V, S, M(Focus)\",\r\n    \"duration\": \"Instantaneous\",\r\n    \"school\": \"Conjuration\",\r\n    \"attackOrSave\": \"Dexterity/Save\",\r\n    \"damageOrEffect\": \"Force\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Same Spell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Spell Copy: 409\", function () {\r",
+							"    pm.response.to.have.status(409)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Arcane Orb\",\r\n    \"level\": 6,\r\n    \"castingTime\": \"1 Minute\",\r\n    \"rangeOrArea\": \"30 Feet\",\r\n    \"components\": \"V, S, M(Focus)\",\r\n    \"duration\": \"Instantaneous\",\r\n    \"school\": \"Conjuration\",\r\n    \"attackOrSave\": \"Dexterity/Save\",\r\n    \"damageOrEffect\": \"Force\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Spells",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Get All Spells: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Specific Spell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Find Single Spell: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells/{{spellId}}",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells",
+						"{{spellId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update An Existing Spell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Update Spell: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    { \"propName\": \"name\", \"value\": \"Updating Spell\" }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells/{{spellId}}",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells",
+						"{{spellId}}"
+					]
+				},
+				"description": "In case of spellId not existing, make a new spell, do a get request on it and use that specified _id after 'spells/'\r\nhttp://localhost:5001/api/v1/spells/<ID>"
+			},
+			"response": []
+		},
+		{
+			"name": "Update A Non Existing Spell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Update Non Existing Spell: 404\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    { \"propName\": \"name\", \"value\": \"Updating Spell\" }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells/{{spellId}}E",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells",
+						"{{spellId}}E"
+					]
+				},
+				"description": "In case of spellId not existing, make a new spell, do a get request on it and use that specified _id after 'spells/'\r\nhttp://localhost:5001/api/v1/spells/<ID>"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Non Existing Spell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Delete Spell: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells/{{spellId}}",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells",
+						"{{spellId}}"
+					]
+				},
+				"description": "In case of spellId not existing, make a new spell, do a get request on it and use that specified _id after 'spells/' http://localhost:5001/api/v1/spells/"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete An Existing Spell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Delete Spell: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/spells/{{spellId}}",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"spells",
+						"{{spellId}}"
+					]
+				},
+				"description": "In case of spellId not existing, make a new spell, do a get request on it and use that specified _id after 'spells/' http://localhost:5001/api/v1/spells/"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove webhook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Delete Webhook: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/webhooks/{{hookId}}",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"webhooks",
+						"{{hookId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unregister A User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Remove User: 200\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://spells-api-1dv527.herokuapp.com/api/v1/users/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"spells-api-1dv527",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwtToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
